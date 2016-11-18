@@ -25,6 +25,9 @@ RUN apt-add-repository ppa:ansible/ansible && \
 # digitial ocean in newest version is broken
 RUN pip install 'dopy==0.3.5'
 
+# ansible lint
+RUN pip install ansible-lint==3.4.4
+
 
 # kubectl
 ENV KUBECTL_VERSION v1.4.6
