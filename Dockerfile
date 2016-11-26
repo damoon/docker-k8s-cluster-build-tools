@@ -10,7 +10,7 @@ CMD ["bash"]
 # bats
 ENV BATS_VERSION 0.4.0
 RUN apt-get update && \
- 	apt-get install -y bats=${BATS_VERSION}-1ubuntu4 && \
+ 	apt-get install -y bats=${BATS_VERSION}-1ubuntu4 netcat && \
  	rm -rf /var/lib/apt/lists/*
 
 
