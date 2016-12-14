@@ -33,7 +33,7 @@ RUN pip install ansible-lint==3.4.4
 
 
 # kubectl
-ENV KUBECTL_VERSION v1.5.0
+ENV KUBECTL_VERSION v1.5.1
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
