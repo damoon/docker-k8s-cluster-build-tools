@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 
 # ansible
-ENV ANSIBLE_VERSION 2.2.0.0
+ENV ANSIBLE_VERSION 2.2.1.0
 
 RUN apt-add-repository ppa:ansible/ansible && \
 	apt-get update && \
