@@ -37,3 +37,9 @@ ENV KUBECTL_VERSION v1.5.1
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
+
+# cfssl
+RUN curl -L https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o /usr/local/bin/cfssl \
+ && chmod +x /usr/local/bin/cfssl \
+ && curl -L https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -o /usr/local/bin/cfssljson \
+ && chmod +x /usr/local/bin/cfssljson
