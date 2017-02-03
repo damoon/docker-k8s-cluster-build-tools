@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [ $# -lt 4 ]; then
+    echo 'usage: retry <num retries> <wait retry secs> <timeout per call> "<command>"'
+    exit 1
+fi
+
+trap "exit" INT
+
+retries=$1
+wait_retry=$2
+call_timeout=$3
+command="${@: 4}"
+
+for i in `seq 0 $retries`; do
+    echo "$command"
+    timeout $3 $command
+    ret_value=$?
+    [ $ret_value -eq 0 ] && break
+    echo "> failed with $ret_value, waiting to retry..."
+    sleep $wait_retry
+done
+
+exit $ret_value

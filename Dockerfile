@@ -43,3 +43,7 @@ RUN curl -L https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o /usr/local/bin/cfssl
  && chmod +x /usr/local/bin/cfssl \
  && curl -L https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -o /usr/local/bin/cfssljson \
  && chmod +x /usr/local/bin/cfssljson
+
+# retry
+COPY retry /usr/local/bin/retry
+RUN chmod +x /usr/local/bin/retry
