@@ -11,7 +11,7 @@ CMD ["bash"]
 # bats
 ENV BATS_VERSION 0.4.0
 RUN apt-get update && \
- 	apt-get install -y bats=${BATS_VERSION}-1ubuntu4 netcat && \
+        apt-get install -y bats=${BATS_VERSION}-1ubuntu4 netcat && \
 	apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -47,3 +47,13 @@ RUN curl -L https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -o /usr/local/bin/cfssl
 # retry
 COPY retry /usr/local/bin/retry
 RUN chmod +x /usr/local/bin/retry
+
+# helm
+ENV HELM_VERSION v2.1.3
+ENV FILENAME helm-${HELM_VERSION}-linux-amd64.tar.gz
+
+RUN curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} -o ${FILENAME} \
+  && mkdir /helm-tmp \
+  && tar -zxvf ${FILENAME} -C /helm-tmp \
+  && mv /helm-tmp/linux-amd64/helm /usr/local/bin/helm \
+  && rm -rf /helm-tmp ${FILENAME}
