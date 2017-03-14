@@ -29,11 +29,11 @@ RUN apt-add-repository ppa:ansible/ansible && \
 RUN pip install 'dopy==0.3.5'
 
 # ansible lint
-RUN pip install ansible-lint==3.4.4
+RUN pip install ansible-lint==3.4.11
 
 
 # kubectl
-ENV KUBECTL_VERSION v1.5.1
+ENV KUBECTL_VERSION v1.5.4
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
@@ -49,11 +49,10 @@ COPY retry /usr/local/bin/retry
 RUN chmod +x /usr/local/bin/retry
 
 # helm
-ENV HELM_VERSION v2.1.3
-ENV FILENAME helm-${HELM_VERSION}-linux-amd64.tar.gz
+ENV HELM_VERSION v2.2.2
 
-RUN curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} -o ${FILENAME} \
+RUN curl -L http://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz -o helm-${HELM_VERSION}-linux-amd64.tar.gz \
   && mkdir /helm-tmp \
-  && tar -zxvf ${FILENAME} -C /helm-tmp \
+  && tar -zxvf helm-${HELM_VERSION}-linux-amd64.tar.gz -C /helm-tmp \
   && mv /helm-tmp/linux-amd64/helm /usr/local/bin/helm \
-  && rm -rf /helm-tmp ${FILENAME}
+  && rm -rf /helm-tmp helm-${HELM_VERSION}-linux-amd64.tar.gz
