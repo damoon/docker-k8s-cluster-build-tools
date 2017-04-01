@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 
 # ansible
-ENV ANSIBLE_VERSION 2.2.1.0
+ENV ANSIBLE_VERSION 2.2.2.0
 
 RUN apt-add-repository ppa:ansible/ansible && \
 	apt-get update && \
@@ -33,7 +33,7 @@ RUN pip install ansible-lint==3.4.11
 
 
 # kubectl
-ENV KUBECTL_VERSION v1.5.4
+ENV KUBECTL_VERSION v1.6.0
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
@@ -49,7 +49,7 @@ COPY retry /usr/local/bin/retry
 RUN chmod +x /usr/local/bin/retry
 
 # helm
-ENV HELM_VERSION v2.2.2
+ENV HELM_VERSION v2.2.3
 
 RUN curl -L http://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz -o helm-${HELM_VERSION}-linux-amd64.tar.gz \
   && mkdir /helm-tmp \
